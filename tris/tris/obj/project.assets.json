@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\tris\\tris\\tris.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\projTris_Csharp\\tris\\tris\\tris.csproj",
       "projectName": "tris",
-      "projectPath": "C:\\Users\\admin\\Desktop\\tris\\tris\\tris.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\projTris_Csharp\\tris\\tris\\tris.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\tris\\tris\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\projTris_Csharp\\tris\\tris\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

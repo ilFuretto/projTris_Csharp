@@ -6,19 +6,19 @@ namespace tris
     {
         private string turno;
         private int cont;
-        private int tempoRimanente;
+        private int tempoRimanente = 3 ;
         public Form1()
         {
             InitializeComponent();
-            timer1.Interval = 1000;
-            timer1.Tick += TimerMossa_Tick;
+            labelTempo.Text = "Tempo rimasto: " + tempoRimanente + "s";
         }
         private void TimerMossa_Tick(object sender, EventArgs e)
         {
             tempoRimanente--;
             labelTempo.Text = "Tempo rimasto: " + tempoRimanente + "s";
-            if (tempoRimanente <= 0)
+            if (tempoRimanente == 0)
             {
+                tempoRimanente = 4; 
                 FaiMossaCasuale();
             }
         }
@@ -36,8 +36,7 @@ namespace tris
         private void button1_Click(object sender, EventArgs e)
         {
             if (timer1.Enabled == false) return;
-            timer1.Stop();
-
+            
             Button pulsante = (Button)sender;
             if (pulsante.Text == "")
             {
@@ -46,12 +45,14 @@ namespace tris
 
                 if (VerificaVittoria())
                 {
+                    timer1.Stop();
                     MessageBox.Show("Ha vinto " + turno + ", complimenti! Molti nemici, molto onore!");
                     fineGioco();
                     return;
                 }
                 else if (cont == 9)
                 {
+                    timer1.Stop();
                     MessageBox.Show("Pareggio");
                     fineGioco();
                     return;
@@ -59,14 +60,13 @@ namespace tris
 
                 turno = (turno == "X") ? "0" : "X";
                 labelTurno.Text = turno;
-                tempoRimanente = 3;
+                tempoRimanente = 4;
             }
-            timer1.Start();
         }
         private void FaiMossaCasuale()
         {
             if (timer1.Enabled == false) return;
-            timer1.Stop();
+           
 
             Random generatore = new Random();
             bool mossaEffettuata = false;
@@ -92,12 +92,14 @@ namespace tris
 
             if (VerificaVittoria() && cont > 5)
             {
+                timer1.Stop();
                 MessageBox.Show("Ha vinto " + turno + ", complimenti! Molti nemici, molto onore!");
                 fineGioco();
                 return;
             }
             else if (cont == 9)
             {
+                timer1.Stop();
                 MessageBox.Show("Pareggio");
                 fineGioco();
                 return;
@@ -105,14 +107,12 @@ namespace tris
             turno = (turno == "X") ? "0" : "X";
             labelTurno.Text = turno;
 
-            tempoRimanente = 3;
-            timer1.Start();
+            tempoRimanente = 4;
         }
         
         private void Form1_Load(object sender, EventArgs e) 
         {
             
-            tempoRimanente = 3; 
             
             cont = 0;
             Random generatore=new Random();
@@ -133,14 +133,12 @@ namespace tris
         {
             buttonInizia.Visible = false;
             labelTempo.Visible = true;
-            labelTempo.Text = "Tempo rimasto: " + tempoRimanente + "s";
-            Form1_Load(this, EventArgs.Empty); 
             timer1.Start();
+            Form1_Load(this, EventArgs.Empty); 
         }
 
         private void fineGioco()
         {
-            timer1.Stop();
             buttonInizia.Visible = true;
             labelTempo.Visible = false;
             return;
